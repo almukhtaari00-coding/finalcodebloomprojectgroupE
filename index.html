@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Form | Full Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="main-container">
+        <aside class="sidebar">
+            <img src="bg-sidebar-desktop.jpg" alt="" class="sidebar-bg">
+            <div class="steps-container">
+                <div class="step active" id="nav-1"><div class="circle">1</div><div class="step-info"><span>STEP 1</span><p>YOUR INFO</p></div></div>
+                <div class="step" id="nav-2"><div class="circle">2</div><div class="step-info"><span>STEP 2</span><p>SELECT PLAN</p></div></div>
+                <div class="step" id="nav-3"><div class="circle">3</div><div class="step-info"><span>STEP 3</span><p>ADD-ONS</p></div></div>
+                <div class="step" id="nav-4"><div class="circle">4</div><div class="step-info"><span>STEP 4</span><p>SUMMARY</p></div></div>
+            </div>
+        </aside>
+
+        <section class="form-content">
+            <div class="form-panel" id="step-1">
+                <h1>Personal info</h1>
+                <p class="desc">Please provide your name, email address, and phone number.</p>
+                <div class="input-group">
+                    <label>Name</label><input type="text" id="user-name" placeholder="e.g. Abdulganiy Mukhtar">
+                    <label>Email Address</label><input type="email" id="user-email" placeholder="e.g. almukhtaari00@gmail.com">
+                    <label>Phone Number</label><input type="tel" id="user-phone" placeholder="e.g. +234 916 009 4976">
+                </div>
+                <div class="footer"><button class="next-btn" onclick="goToStep(2)">Next Step</button></div>
+            </div>
+
+            <div class="form-panel hidden" id="step-2">
+                <h1>Select your plan</h1>
+                <p class="desc">You have the option of monthly or yearly billing.</p>
+                <div class="plan-grid">
+                    <div class="plan-card active" onclick="selectPlan(this, 9, 90, 'Arcade')">
+                        <img src="icon-arcade.svg.jpeg" alt="">
+                        <div class="plan-details"><h3>Arcade</h3><span class="price-tag">$9/mo</span></div>
+                    </div>
+                    <div class="plan-card" onclick="selectPlan(this, 12, 120, 'Advanced')">
+                        <img src="icon-advanced.svg.jpeg" alt="">
+                        <div class="plan-details"><h3>Advanced</h3><span class="price-tag">$12/mo</span></div>
+                    </div>
+                    <div class="plan-card" onclick="selectPlan(this, 15, 150, 'Pro')">
+                        <img src="icon-pro.svg.jpeg" alt="">
+                        <div class="plan-details"><h3>Pro</h3><span class="price-tag">$15/mo</span></div>
+                    </div>
+                </div>
+                <div class="toggle-container">
+                    <span id="mo-label" class="active">Monthly</span>
+                    <label class="switch"><input type="checkbox" id="bill-check" onchange="toggleBill()"><span class="slider"></span></label>
+                    <span id="yr-label">Yearly</span>
+                </div>
+                <div class="footer"><button class="back-btn" onclick="goToStep(1)">Go Back</button><button class="next-btn" onclick="goToStep(3)">Next Step</button></div>
+            </div>
+
+            <div class="form-panel hidden" id="step-3">
+                <h1>Pick add-ons</h1>
+                <p class="desc">Add-ons help enhance your gaming experience.</p>
+                <div class="addon-box" onclick="toggleAddon(this, 1, 10)">
+                    <div class="addon-left"><input type="checkbox"><div><h3>Online service</h3><span>Access to multiplayer games</span></div></div>
+                    <span class="addon-price">+$1/mo</span>
+                </div>
+                <div class="addon-box" onclick="toggleAddon(this, 2, 20)">
+                    <div class="addon-left"><input type="checkbox"><div><h3>Larger storage</h3><span>Extra 1TB of cloud save</span></div></div>
+                    <span class="addon-price">+$2/mo</span>
+                </div>
+                <div class="addon-box" onclick="toggleAddon(this, 2, 20)">
+                    <div class="addon-left"><input type="checkbox"><div><h3>Customizable Profile</h3><span>Custom theme on your profile</span></div></div>
+                    <span class="addon-price">+$2/mo</span>
+                </div>
+                <div class="footer"><button class="back-btn" onclick="goToStep(2)">Go Back</button><button class="next-btn" onclick="goToStep(4)">Next Step</button></div>
+            </div>
+
+            <div class="form-panel hidden" id="step-4">
+                <h1>Finishing up</h1>
+                <p class="desc">Double-check everything looks OK before confirming.</p>
+                <div class="summary-card">
+                    <div class="summary-row"><div><b id="final-plan-name">Arcade (Monthly)</b><br><span class="change-link" onclick="goToStep(2)">Change</span></div><b id="final-plan-price">$9/mo</b></div>
+                    <hr>
+                    <div id="addons-list-final"></div>
+                </div>
+                <div class="total-row"><span>Total (per month)</span><b id="total-final-price" style="color:#473dff; font-size:20px;">+$9/mo</b></div>
+                <div class="footer"><button class="back-btn" onclick="goToStep(3)">Go Back</button><button class="confirm-btn" onclick="alert('Thank you for your order!')">Confirm</button></div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+:root { --marine: #02295a; --purplish: #473dff; --gray: #9699ab; --light: #f0f6ff; --blue-light: #bee2fd; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Ubuntu', sans-serif; }
+body { background: #eff5ff; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+
+.main-container { background: white; width: 940px; height: 600px; padding: 15px; border-radius: 15px; display: flex; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+
+/* Sidebar stays on all pages */
+.sidebar { width: 275px; position: relative; border-radius: 10px; overflow: hidden; padding: 35px; color: white; }
+.sidebar-bg { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; z-index:1; }
+.steps-container { position: relative; z-index:2; }
+.step { display: flex; align-items: center; margin-bottom: 25px; }
+.circle { width: 33px; height: 33px; border: 1px solid white; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 15px; font-weight: bold; }
+.step.active .circle { background: var(--blue-light); color: var(--marine); border-color: var(--blue-light); }
+.step-info span { font-size: 12px; opacity: 0.7; }
+.step-info p { font-size: 14px; font-weight: bold; letter-spacing: 1px; }
+
+/* Right Content */
+.form-content { flex: 1; padding: 40px 80px; position: relative; }
+.hidden { display: none; }
+h1 { color: var(--marine); font-size: 32px; margin-bottom: 10px; }
+.desc { color: var(--gray); margin-bottom: 35px; }
+
+/* Step 1 Inputs */
+.input-group { display: flex; flex-direction: column; }
+.input-group label { color: var(--marine); font-size: 14px; margin-top: 15px; margin-bottom: 5px; }
+.input-group input { padding: 12px; border: 1px solid #d6d9df; border-radius: 8px; font-size: 16px; font-weight: 500; color: var(--marine); }
+
+/* Step 2 Grid */
+.plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.plan-card { border: 1px solid #d6d9df; padding: 20px; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+.plan-card img { margin-bottom: 40px; }
+.plan-card.active { border-color: var(--purplish); background: var(--light); }
+.plan-details h3 { color: var(--marine); font-size: 16px; }
+.plan-details span { color: var(--gray); font-size: 14px; }
+
+/* Step 3 Addons */
+.addon-box { border: 1px solid #d6d9df; padding: 15px 20px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; cursor: pointer; transition: 0.3s; }
+.addon-box.active { border-color: var(--purplish); background: var(--light); }
+.addon-left { display: flex; align-items: center; gap: 20px; }
+.addon-left h3 { font-size: 16px; color: var(--marine); margin-bottom: 3px; }
+.addon-left span { font-size: 14px; color: var(--gray); }
+.addon-price { color: var(--purplish); font-weight: 500; }
+
+/* Navigation Footer */
+.footer { position: absolute; bottom: 40px; left: 80px; right: 80px; display: flex; justify-content: space-between; align-items: center; }
+.next-btn { background: var(--marine); color: white; border: none; padding: 14px 25px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+.confirm-btn { background: var(--purplish); color: white; border: none; padding: 14px 25px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+.back-btn { background: none; border: none; color: var(--gray); cursor: pointer; font-weight: bold; }
+
+/* Toggle Switch */
+.toggle-container { background: var(--light); display: flex; justify-content: center; align-items: center; gap: 20px; padding: 12px; border-radius: 8px; margin-top: 30px; font-weight: bold; color: var(--gray); }
+.period.active { color: var(--marine); }
+.switch { position: relative; width: 40px; height: 20px; display: inline-block; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--marine); border-radius: 34px; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 12px; width: 12px; left: 4px; bottom: 4px; background-color: white; border-radius: 50%; transition: .4s; }
+input:checked + .slider:before { transform: translateX(20px); }
+
+/* Step 4 Summary */
+.summary-card { background: var(--light); padding: 25px; border-radius: 8px; }
+.summary-row { display: flex; justify-content: space-between; align-items: center; }
+.change-link { color: var(--gray); text-decoration: underline; cursor: pointer; font-size: 14px; }
+.total-row { padding: 25px; display: flex; justify-content: space-between; align-items: center; color: var(--gray); }
+.footer {
+    display: flex;
+    justify-content: flex-end; /* This pushes the button to the right */
+    align-items: center;
+    margin-top: auto; /* Helps push the footer to the bottom of the container */
+    padding-top: 20px;
+}
+.footer {
+    display: flex;
+    justify-content: space-between; /* This pushes one left and one right */
+    align-items: center;
+    margin-top: auto;
+    padding-top: 20px;
+}
+#step-1 .next-btn {
+    margin-left: auto;
+}
