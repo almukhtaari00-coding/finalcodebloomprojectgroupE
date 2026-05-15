@@ -12,7 +12,7 @@ function goToStep(stepNum) {
     document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
     document.getElementById(`nav-${stepNum}`).classList.add('active');
 
-    if (stepNum === 4) updateSummary();
+    
 }
 
 // Select monthly/yearly toggle
@@ -48,30 +48,3 @@ function toggleAddon(element) {
     checkbox.checked = !checkbox.checked;
 }
 
-// Update the final summary page
-function updateSummary() {
-    const period = isYearly ? "Yearly" : "Monthly";
-    const suffix = isYearly ? "yr" : "mo";
-    
-    document.getElementById('final-plan-name').innerText = `${currentPlan.name} (${period})`;
-    document.getElementById('final-plan-price').innerText = `$${currentPlan.price}/${suffix}`;
-    
-    let total = currentPlan.price;
-    const finalAddonsBox = document.getElementById('addons-list-final');
-    finalAddonsBox.innerHTML = "";
-
-    document.querySelectorAll('.addon-box.active').forEach(addon => {
-        const title = addon.querySelector('h3').innerText;
-        const priceText = addon.querySelector('.addon-price').innerText;
-        const priceValue = parseInt(priceText.replace(/[^0-9]/g, ''));
-        
-        total += priceValue;
-        finalAddonsBox.innerHTML += `
-            <div class="summary-row" style="margin-top:15px;">
-                <span style="color:#9699ab">${title}</span>
-                <span style="color:#02295a">${priceText}</span>
-            </div>`;
-    });
-
-    document.getElementById('total-final-price').innerText = `+$${total}/${suffix}`;
-}
